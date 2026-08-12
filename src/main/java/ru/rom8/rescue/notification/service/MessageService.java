@@ -44,7 +44,8 @@ public class MessageService {
         Map<ParamType, String> params = event.getParams().stream()
                 .collect(Collectors.toMap(
                         NotificationEventParamV1::getParamType,
-                        NotificationEventParamV1::getParamValue));
+                        NotificationEventParamV1::getParamValue,
+                        (val1, val2) -> val1));
 
         return switch (incidentStatus) {
             case IN_PROGRESS -> new Message(
