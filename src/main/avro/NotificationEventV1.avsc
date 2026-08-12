@@ -1,0 +1,114 @@
+{
+  "type": "record",
+  "name": "NotificationEventV1",
+  "namespace": "ru.rom8.rescue.notification.avro",
+  "doc": "Событие для отправки уведомлений волонтёрам/администраторам",
+  "fields": [
+    {
+      "name": "event_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "occurred_at",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "producer",
+      "type": "string"
+    },
+    {
+      "name": "incident_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "incident_status",
+      "type": {
+        "type": "enum",
+        "name": "IncidentStatus",
+        "symbols": [
+          "IN_PROGRESS",
+          "SUCCESS",
+          "FAIL"
+        ]
+      }
+    },
+    {
+      "name": "params",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "NotificationEventParamV1",
+          "fields": [
+            {
+              "name": "param_type",
+              "type": {
+                "type": "enum",
+                "name": "ParamType",
+                "symbols": [
+                  "DESCRIPTION",
+                  "LAT",
+                  "LON",
+                  "LOCATION",
+                  "PERSON_NAME",
+                  "PHOTO_URL",
+                  "PERSON_AGE",
+                  "IDENTIFYING_MARKS",
+                  "LAST_SEEN_CLOTHES",
+                  "LAST_SEEN_DATE"
+                ]
+              }
+            },
+            {
+              "name": "param_value",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "contacts",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "Contact",
+          "fields": [
+            {
+              "name": "contact_type",
+              "type": {
+                "type": "enum",
+                "name": "ContactType",
+                "symbols": [
+                  "EMAIL",
+                  "PHONE"
+                ]
+              }
+            },
+            {
+              "name": "contact",
+              "type": "string"
+            },
+            {
+              "name": "volunteer_id",
+              "type": {
+                "type": "string",
+                "logicalType": "uuid"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
