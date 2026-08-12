@@ -1,14 +1,8 @@
 package ru.rom8.rescue.notification.msg;
 
-public interface Message {
-
-    /**
-     * Заголовок
-     */
-    String title();
-
-    /**
-     * Тело сообщения
-     */
-    String body();
+/**
+ * @param title Заголовок
+ * @param body Тело сообщения
+ */
+public record Message(String title, String body) {
 }
