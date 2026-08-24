@@ -14,7 +14,7 @@ public class NotificationEventListener {
 
     private final MessageService messageService;
 
-    @KafkaListener(topics = "volunteer_notification_event_v1")
+    @KafkaListener(topics = "${spring.kafka.consumer.notification-topic}")
     public void handle(NotificationEventV1 event) {
         Message message = messageService.createMessage(event);
 

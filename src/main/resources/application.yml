@@ -7,6 +7,7 @@ spring:
       schema.registry.url: ${SCHEMA_REGISTRY_URL:http://localhost:8081}
     consumer:
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      notification-topic: volunteer_notification_event_v1
 
 logging:
   structured:
